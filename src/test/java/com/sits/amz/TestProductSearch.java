@@ -18,7 +18,7 @@ public class TestProductSearch extends TestNgTestBase {
       HomePage homePage = PageFactory.initElements(driver, HomePage.class);
       ProductListPage productListPage = homePage.search_product(productKeyWord);
       productListPage.sortByPrice();
-      ProductDetailsPage productDetailsPage = productListPage.openProductDetailsPage();
+      ProductDetailsPage productDetailsPage = productListPage.openProductDetailsAt(1);
       String productTitle = productDetailsPage.getProductTitle();
       Assert.assertTrue(productTitle.contains(expectedProductTitle));
   }

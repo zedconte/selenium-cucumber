@@ -4,7 +4,6 @@ import com.sits.amz.locators.Locators;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.Select;
 
@@ -14,12 +13,6 @@ import java.util.List;
  * Created by mphome on 02/12/17.
  */
 public class ProductListPage extends Page{
-
-    @FindBy(xpath = Locators.ProductListPage.SECOND_PRODUCT_RESULT_DIV)
-    private WebElement secondProductResultDiv;
-
-    @FindBy(xpath = Locators.ProductListPage.SECOND_PRODUCT_RESULT_LINK)
-    private WebElement secondProductResultLink;
 
     public ProductListPage(WebDriver driver) {
         super(driver);
@@ -36,18 +29,34 @@ public class ProductListPage extends Page{
         }
     }
 
-    public ProductDetailsPage openProductDetailsPage(){
-        WebElement secondProductInList = getSecondProductResultLink();
+    /**
+     * Returns Product Details for product at given Index
+     * @param index: Index of Element in List (Zero being first element in list)
+     * @return ProductDetailsPage
+     */
+    public ProductDetailsPage openProductDetailsAt(int index){
+        WebElement secondProductInList = getProductResultLinkAt(index);
         secondProductInList.click();
         System.out.println("Clicked Second Product in the List");
 
         return PageFactory.initElements(driver, ProductDetailsPage.class);
     }
 
-    private WebElement getSecondProductResultLink(){
-        scrollToElement(secondProductResultDiv);
-        WebElement secondElement = syncHelper.waitForElementToBeVisible(this.driver, secondProductResultLink);
-        return secondElement;
+    /**
+     * Returns Product Link for element in the result List
+     * @param index : Index of Element in List (Zero being first element in list)
+     * @return Webelement (link to product in the list)
+     */
+    private WebElement getProductResultLinkAt(int index){
+        WebElement productElementDiv = driver.findElement(By.xpath(String.format(Locators.ProductListPage
+                .PRODUCT_RESULT_DIV,
+                index)));
+        WebElement productElementLink = driver.findElement(By.xpath(String.format(Locators.ProductListPage
+                        .PRODUCT_RESULT_LINK,
+                index)));
+        scrollToElement(productElementDiv);
+        WebElement element = syncHelper.waitForElementToBeVisible(this.driver, productElementLink);
+        return element;
     }
 
     private Select getSortDropDown(){
