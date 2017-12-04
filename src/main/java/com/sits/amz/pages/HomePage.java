@@ -8,7 +8,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 /**
- * Sample page
+ * Home page
  */
 public class HomePage extends Page {
     @FindBy(id = Locators.HomePage.SEARCH_BOX)
