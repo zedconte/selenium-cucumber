@@ -1,7 +1,7 @@
 package com.sits.amz.locators;
 
 /**
- * Created by mphome on 02/12/17.
+ * Created by Mrudul Pendharkar.
  */
 public class Locators {
 
