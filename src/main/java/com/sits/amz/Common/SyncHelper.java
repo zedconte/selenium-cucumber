@@ -1,4 +1,4 @@
-package com.sits.amz.Common;
+package com.sits.amz.common;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
