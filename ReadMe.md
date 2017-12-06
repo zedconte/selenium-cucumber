@@ -9,7 +9,7 @@ Sample code for Testing Amazon Product Search using Selenium
 
 ## Implementation
 
-Project is generated using [ru.stqa.selenium](https://mvnrepository.com/artifact/ru.stqa.selenium/webdriver-testng-archetype/4.2) archetype.
+In the spirit of not wanting to reinvent wheel & learning from best practices from opensource community out there, this project is generated using [ru.stqa.selenium](https://mvnrepository.com/artifact/ru.stqa.selenium/webdriver-testng-archetype/4.2) archetype.
 
 This helps in setting up basic maven dependencies, configuration file using property files & out of box WebDriver pooler to manager webdrivers.
 
@@ -34,4 +34,9 @@ This code is tested against --
 * OS X (El Capitan) 10.11.6
 
 
+## References
 
+* [Maven Archetype](https://maven.apache.org/guides/introduction/introduction-to-archetypes.html)
+* [TestNG, Cucumber, Maven](https://medium.com/agile-vision/cucumber-bdd-part-2-creating-a-sample-java-project-with-cucumber-testng-and-maven-127a1053c180)
+* [Introduction to Cucumber & BDD with examples](https://automationrhapsody.com/introduction-to-cucumber-and-bdd-with-examples/)
+* [Video Series on Introduction to Cucumber & Selenium](https://www.youtube.com/watch?v=TUX7ntXlVkc&list=PL6tu16kXT9PpteusHGISu_lHcV6MbBtA6)
