@@ -65,22 +65,6 @@ public class ProductListPage extends Page{
     }
 
     /**
-     * Sorts Result by Price
-     */
-   /*
-    public void sortByPrice(){
-
-        Select sort_by_drop_down = getSortByDropDown();
-        List<WebElement> options = sort_by_drop_down.getOptions();
-        for (WebElement option : options) {
-            if (option.getText().equals(Locators.ProductListPage.PRICE_HIGH_TO_LOW)) {
-                option.click();
-                break;
-            }
-        }
-    }
-*/
-    /**
      * Returns Product Details for product at given Index
      * @param index: Index of Element in List (Zero being first element in list)
      * @return ProductDetailsPage

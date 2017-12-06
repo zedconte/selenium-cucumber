@@ -24,10 +24,13 @@ public class TestProductSearch extends TestNgTestBase {
         driver.get(baseUrl);
         HomePage homePage = PageFactory.initElements(driver, HomePage.class);
         Assert.assertTrue(homePage.isSearchBoxVisible());
+
         ProductListPage productListPage = homePage.search_product(PRODUCT_KEY_WORD);
         Assert.assertTrue(productListPage.containsOption(PRICE_HIGH_TO_LOW));
+
         productListPage.sortBy(PRICE_HIGH_TO_LOW);
         Assert.assertTrue(productListPage.verifyProductListIsSortedByPrice(false));
+
         ProductDetailsPage productDetailsPage = productListPage.openProductDetailsAt(SECOND_PRODUCT_INDEX);
         String productTitle = productDetailsPage.getProductTitle();
         Assert.assertTrue(productTitle.contains(EXPECTED_PRODUCT_TITLE));
