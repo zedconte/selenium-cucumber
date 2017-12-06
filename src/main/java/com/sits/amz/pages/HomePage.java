@@ -19,10 +19,24 @@ public class HomePage extends Page {
         super(webDriver);
     }
 
+    /**
+     * Enters ProductKeyword and submits form.
+     *
+     * @param productKeyWord
+     * @return ProductListPage (containing list of products)
+     */
     public ProductListPage search_product(String productKeyWord){
         this.searchBox.sendKeys(productKeyWord);
         this.searchBox.submit();
         return PageFactory.initElements(driver, ProductListPage.class);
+    }
+
+    /**
+     * Returns True if SearchBox is visible
+     * @return True if SearchBox is visible else False
+     */
+    public boolean isSearchBoxVisible(){
+        return this.searchBox.isDisplayed();
     }
 
 }

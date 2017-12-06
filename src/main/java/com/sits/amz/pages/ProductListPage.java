@@ -1,9 +1,12 @@
 package com.sits.amz.pages;
 
 import com.sits.amz.locators.Locators;
+import org.apache.commons.lang3.NotImplementedException;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.CacheLookup;
+import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.Select;
 
@@ -14,14 +17,59 @@ import java.util.List;
  */
 public class ProductListPage extends Page{
 
+    @FindBy(xpath = Locators.ProductListPage.PRODUCT_KW)
+    @CacheLookup
+    private WebElement productListKeyword;
+
     public ProductListPage(WebDriver driver) {
         super(driver);
     }
 
     /**
+     * Gets Text of Product List Keyword
+     * @return keyword text
+     */
+    public String getProductListKeywordText(){
+        return this.productListKeyword.getText();
+    }
+
+    /**
+     * Checks if optionText is available from list of options
+     * @param optionText : String specifying Sorting option
+     * @return True if optionText is available else False
+     */
+    public boolean containsOption(String optionText){
+        Select sort_by_drop_down = getSortByDropDown();
+        List<WebElement> options = sort_by_drop_down.getOptions();
+        for (WebElement option : options) {
+            if (option.getText().toLowerCase().equals(optionText.toLowerCase())) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    /**
+     * Sorts Result by Option Passed as Parameter
+     * @param optionText : String specifying Sorting option
+     */
+    public void sortBy(String optionText){
+        Select sort_by_drop_down = getSortByDropDown();
+        List<WebElement> options = sort_by_drop_down.getOptions();
+        for (WebElement option : options) {
+            if (option.getText().equals(optionText)) {
+                option.click();
+                break;
+            }
+        }
+    }
+
+    /**
      * Sorts Result by Price
      */
+   /*
     public void sortByPrice(){
+
         Select sort_by_drop_down = getSortByDropDown();
         List<WebElement> options = sort_by_drop_down.getOptions();
         for (WebElement option : options) {
@@ -31,7 +79,7 @@ public class ProductListPage extends Page{
             }
         }
     }
-
+*/
     /**
      * Returns Product Details for product at given Index
      * @param index: Index of Element in List (Zero being first element in list)
@@ -50,7 +98,7 @@ public class ProductListPage extends Page{
      *
      * @return True if price is sorted else False
      */
-    public boolean verifyProductListIsSortedByPrice(boolean ascending){
+    public boolean verifyProductListIsSortedByPrice(boolean ascending) throws NotImplementedException {
         String productSortedListString = "";
         WebElement productSortedListLabel = null;
 
@@ -62,6 +110,9 @@ public class ProductListPage extends Page{
             productSortedListString = String.format(Locators.ProductListPage.PRODUCT_SORTED_LIST_STRING, Locators
                     .ProductListPage.PRICE_HIGH_TO_LOW);
             productSortedListLabel = getProductSortedListLabel();
+        }
+        else {
+            throw new NotImplementedException("Other Sorting Options Not Implemented.");
         }
 
         if (productSortedListLabel.getText().equals(productSortedListString))

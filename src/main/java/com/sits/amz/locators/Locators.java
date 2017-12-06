@@ -10,9 +10,10 @@ public class Locators {
     }
 
     public final class ProductListPage{
-/*
+
         public final static String PRODUCT_KW = "//*[@id=\"bcKwText\"]";
         public final static String PRODUCT_KW_STRING = "nikon";
+/*
         public final static String PRODUCT_CATEGORY = "//*[@id=\"autoscoping-backlink\"]/div/span[1]";
         public final static String PRODUCT_CATEGORY_STRING = "Showing results in Electronics";
 */
