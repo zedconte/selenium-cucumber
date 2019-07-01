@@ -12,8 +12,8 @@ import org.testng.annotations.Test;
 public class TestProductSearch extends TestNgTestBase {
 
     private final static String PRODUCT_KEY_WORD = "Nikon";
-    private final static String EXPECTED_PRODUCT_TITLE = "Nikon D3X";
-    private final static int SECOND_PRODUCT_INDEX = 1;
+    private final static String EXPECTED_PRODUCT_TITLE = "Nikon D5 FX-Format DSLR Camera Body (CF Version) - Bundle With Camera Bag, Spare Battery, 64GB CF Card, 4TB External Hard Drive, Tripod, Remote Shutter Trigger, Video Light, Software Package, And More";
+    private final static int SECOND_PRODUCT_INDEX = 2;
     private final static String PRICE_HIGH_TO_LOW = "Price: High to Low";
 
     /**

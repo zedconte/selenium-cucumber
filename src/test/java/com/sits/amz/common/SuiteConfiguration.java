@@ -18,6 +18,7 @@ public class SuiteConfiguration {
 
     public SuiteConfiguration() throws IOException {
         this(System.getProperty("application.properties", DEBUG_PROPERTIES));
+        System.setProperty("webdriver.chrome.driver", "C:\\opt\\chromedriver_win32\\chromedriver.exe");
     }
 
     public SuiteConfiguration(String fromResource) throws IOException {

@@ -3,7 +3,7 @@
 <suite name="Tests" verbose="5">
   <test name="Test1">
     <classes>
-      <class name="com.sits.amz.TestProductSearch"/>
+      <class name="com.sits.amz.test.TestProductSearch"/>
     </classes>
   </test>
 </suite>

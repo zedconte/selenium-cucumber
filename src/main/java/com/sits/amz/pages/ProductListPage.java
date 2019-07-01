@@ -1,5 +1,6 @@
 package com.sits.amz.pages;
 
+import com.sits.amz.common.SyncHelper;
 import com.sits.amz.locators.Locators;
 import org.apache.commons.lang3.NotImplementedException;
 import org.openqa.selenium.By;
@@ -87,7 +88,7 @@ public class ProductListPage extends Page{
         WebElement productSortedListLabel = null;
 
         // Verifying Element is visible
-        syncHelper.waitForElementToBeVisible(this.driver, Locators.ProductListPage.PRODUCT_SORTED_LIST_LABEL);
+        SyncHelper.waitForElementToBeVisible(this.driver, Locators.ProductListPage.PRODUCT_SORTED_LIST_LABEL);
 
         if (!ascending){
             // Which means descending => High To Low
@@ -99,7 +100,7 @@ public class ProductListPage extends Page{
             throw new NotImplementedException("Other Sorting Options Not Implemented.");
         }
 
-        if (productSortedListLabel.getText().equals(productSortedListString))
+        if (new StringBuilder(productSortedListLabel.getText().concat(" ")).append(Locators.ProductListPage.PRICE_HIGH_TO_LOW).toString().equals(productSortedListString))
             return true;
         else
             return false;
@@ -113,7 +114,7 @@ public class ProductListPage extends Page{
     private WebElement getProductResultLinkAt(int index){
 
         scrollToElement(getProductElementDivAt(index));
-        WebElement element = syncHelper.waitForElementToBeVisible(this.driver, getProductElementLinkAt(index));
+        WebElement element = SyncHelper.waitForElementToBeVisible(this.driver, getProductElementLinkAt(index));
         return element;
     }
 
